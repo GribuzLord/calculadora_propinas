@@ -21,6 +21,7 @@ function App() {
             <MenuItem
               key={item.id}
               item={item}
+              
             />
           ))}
         </div>
