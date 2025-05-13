@@ -8,13 +8,13 @@ export default function useOrder(){
     const addItem=(item:MenuItem)=>{
         const itemExist=order.find(orderItem=>orderItem.id===item.id)
 
-        if(itemExist){
+        if(itemExist){ //Se verifica la duplicidad del item para la orden y se aumenta solo la cantidad
             const updatedOrder=order.map(orderItem=>
                 orderItem.id===item.id ? {...orderItem,quantity:orderItem.quantity+1}
                 : orderItem
             )
             setOrder(updatedOrder)
-        }else{
+        }else{//Se agrega el item por primera vez
             const newItem={...item,quantity:1}
             setOrder([...order,newItem])
         }
@@ -22,10 +22,9 @@ export default function useOrder(){
         
     }
 
-    console.log(order)
-
 
     return{
+        order,
         addItem
     }
 }
